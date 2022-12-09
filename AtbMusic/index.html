@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+    <title>Musique</title>
+</head>
+<body>
+  <div class="container">
+    <div class="musique"> 
+        <img src="./image/headphones-g89d207783_1280.png" alt="">
+        <div class="info">
+          <h1>ATB</h1>
+          <p>_9Pm_Till_I_Come_</p>
+          <div id="waveform"></div>
+         <div class="controls">
+          <img src="./image/play.png" alt ="" id ="play">
+          <img src="./image/stop-g4a68c000b_1920.jpg" alt="" id ="stop">
+          <img src="./image/volume.png" alt=""id ="volume">
+         </div>
+        </div>  
+
+        </div>
+
+  </div>
+       
+ <script>
+
+  let playbtn = document.getElementById("play")
+  let stopbtn  = document.getElementById("stop")
+  let volumebtn  = document.getElementById("volume")
+
+  playbtn.onclick = function(){
+      wavesurfer.playPause();
+      play.src.includes("play.png")? play.src ="/image/pause.png" : play.src ="/image/play.png"
+  }
+
+  stopbtn.onclick = function(){
+      wavesurfer.stop();
+  }
+
+  volumebtn.onclick = function(){
+      wavesurfer.toggleMute();
+      volume.src.includes("volume.png")? volume.src ="image/mute.png" : volume.src ="image/volume.png"
+  }
+
+  var wavesurfer = WaveSurfer.create({
+    container: '#waveform',
+    waveColor: '#864A28',
+    progressColor: '#fff',
+    barWidth:4,
+    Response:true,
+    height: 128,
+    barRadius: 5,
+    hideScrollbar: true,
+
+
+});
+
+wavesurfer.load('/media/ATB_9Pm_Till_I_Come_.mp3');
+
+wavesurfer.on('finish', function () {
+  play.src ="/image/play.png"
+    wavesurfer.stop();
+});
+
+ </script>
+</body>
+</html>
